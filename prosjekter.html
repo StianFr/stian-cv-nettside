@@ -12,8 +12,6 @@
 .orb{min-height:300px;border-radius:25px;border:1px solid var(--line);background:radial-gradient(circle at 60% 40%,#c1f76444,transparent 38%),radial-gradient(circle at 30% 60%,#8db6ff44,transparent 40%),#111f2e;display:grid;place-items:center;position:relative;overflow:hidden}
 .orb:after{content:"";position:absolute;width:220px;height:220px;border:1px solid #c1f76477;border-radius:30px;transform:rotate(25deg)}
 .play-symbol{position:relative;z-index:2;font:700 112px 'Space Grotesk';color:#c1f764;text-shadow:0 0 50px #c1f76455}
-.project-toolbar{display:flex;justify-content:space-between;gap:18px;align-items:center;margin:10px 0 26px}
-.project-counter{font-size:13px;letter-spacing:1.6px;color:var(--accent);font-weight:700}
 .project-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
 .project-card{background:var(--panel);border:1px solid var(--line);border-radius:20px;overflow:hidden;transition:transform .2s,border-color .2s}
 .project-card:hover{transform:translateY(-5px);border-color:var(--accent)}
@@ -33,7 +31,7 @@
 </style></head>
 <body><header class="top"><div class="wrap nav"><a class="brand" href="/index.html">SF<b>.</b> <span style="font-size:14px;letter-spacing:0">STIAN FRAFJORD</span></a><nav class="links"><a href="/index.html">CV / Om meg</a><a href="/index.html#erfaring">Erfaring</a><a class="project-link" href="/prosjekter.html" aria-current="page">Prosjekter ↗</a><button class="theme" id="theme" aria-label="Bytt fargetema">☀︎ / ☾</button></nav></div></header>
 <main><section class="wrap projects-hero"><div><div class="kicker"><span class="pulse"></span> PORTFØLJE / APPER OG LØSNINGER</div><h1>Fra idé til <em>ferdig app.</em></h1><p>Her samler jeg prosjekter jeg bygger, utforsker og lærer av. Etter hvert kan du se korte videodemoer av hvordan løsningene fungerer – ikke bare lese om dem.</p><div class="actions"><a class="btn primary" href="#prosjektliste">Utforsk prosjektene ↓</a><a class="btn outline" href="/index.html">Tilbake til CV ↗</a></div></div><div class="orb"><span class="play-symbol">▶</span></div></section>
-<section class="section dark" id="prosjektliste"><div class="wrap"><div class="section-head"><div><div class="kicker">01 / PROSJEKTER</div><h2>Se det <span>i praksis.</span></h2></div><p>Her er et par prosjekter jeg har laget på fritiden, med hjelp av kunstig intelligens (KI).</p></div><div class="project-toolbar"><span class="project-counter" id="counter">0 VIDEODEMOER PUBLISERT</span><span style="color:var(--muted);font-size:13px">To prosjekter</span></div><div class="project-grid" id="projectGrid"></div><div class="info-panel"><div><h3>To appdemoer</h3><p>To skjermopptak viser appene i bruk. Prosjektene er eksempler på praktisk problemløsning, brukervennlighet og interesse for datadrevne løsninger.</p></div><a class="btn primary" href="mailto:stianfrafjord@hotmail.com?subject=Sp%C3%B8rsm%C3%A5l%20om%20prosjekter">Spør meg om prosjektene ↗</a></div></div></section><section class="contact" id="kontakt"><div class="kicker">02 / KONTAKT</div><h2>Har du en idé<br>vi bør snakke om?</h2><p>Jeg er interessert i data, gode digitale løsninger og praktisk problemløsning.</p><div class="actions"><a class="btn" href="mailto:stianfrafjord@hotmail.com">Send e-post ↗</a><a class="btn outline" href="https://www.linkedin.com/in/stian-frafjord-09b917ba" rel="noopener" target="_blank">LinkedIn ↗</a></div></section></main>
+<section class="section dark" id="prosjektliste"><div class="wrap"><div class="section-head"><div><div class="kicker">01 / PROSJEKTER</div><h2>Se det <span>i praksis.</span></h2></div><p>Her er et par prosjekter jeg har laget på fritiden, med hjelp av kunstig intelligens (KI).</p></div><div class="project-grid" id="projectGrid"></div><div class="info-panel"><div><h3>To appdemoer</h3><p>To skjermopptak viser appene i bruk. Prosjektene er eksempler på praktisk problemløsning, brukervennlighet og interesse for datadrevne løsninger.</p></div><a class="btn primary" href="mailto:stianfrafjord@hotmail.com?subject=Sp%C3%B8rsm%C3%A5l%20om%20prosjekter">Spør meg om prosjektene ↗</a></div></div></section><section class="contact" id="kontakt"><div class="kicker">02 / KONTAKT</div><h2>Har du en idé<br>vi bør snakke om?</h2><p>Jeg er interessert i data, gode digitale løsninger og praktisk problemløsning.</p><div class="actions"><a class="btn" href="mailto:stianfrafjord@hotmail.com">Send e-post ↗</a><a class="btn outline" href="https://www.linkedin.com/in/stian-frafjord-09b917ba" rel="noopener" target="_blank">LinkedIn ↗</a></div></section></main>
 <footer class="wrap foot"><div>© <span id="year"></span> Stian Frafjord</div><div><a href="/index.html">Tilbake til hovedsiden ↑</a></div></footer>
 <script>
 document.getElementById('year').textContent=new Date().getFullYear();
@@ -45,8 +43,6 @@ const projects = [
 ];
 function ytId(url){try{const u=new URL(url);if(['youtube.com','www.youtube.com','m.youtube.com'].includes(u.hostname)){if(u.pathname==='/watch')return u.searchParams.get('v');if(u.pathname.startsWith('/embed/'))return u.pathname.split('/')[2]}if(u.hostname==='youtu.be')return u.pathname.slice(1).split('/')[0]}catch(e){}return null}
 const grid=document.getElementById('projectGrid');
-let count=0;
-const showCount=()=>{document.getElementById('counter').textContent=count+' VIDEODEMO'+(count===1?'':'ER')+' PUBLISERT'};
 const placeholder=frame=>{const ico=document.createElement('span');ico.className='vid-icon';ico.textContent='▷';frame.replaceChildren(ico)};
 projects.forEach((p,i)=>{
  const card=document.createElement('article');card.className='project-card';
@@ -61,13 +57,12 @@ projects.forEach((p,i)=>{
  placeholder(frame);card.append(frame,body);grid.appendChild(card);
  const id=p.videoUrl?ytId(p.videoUrl):null;
  if(id&&/^[a-zA-Z0-9_-]{11}$/.test(id)){
-  const player=document.createElement('iframe');player.src='https://www.youtube-nocookie.com/embed/'+id;player.loading='lazy';player.title='Video: '+p.title;player.allow='accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share';player.allowFullscreen=true;frame.replaceChildren(player);status.textContent='Se videodemo';count++;showCount();
+  const player=document.createElement('iframe');player.src='https://www.youtube-nocookie.com/embed/'+id;player.loading='lazy';player.title='Video: '+p.title;player.allow='accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share';player.allowFullscreen=true;frame.replaceChildren(player);status.textContent='Se videodemo';
  }else if(p.videoUrl&&/^(https:\/\/|\/)/i.test(p.videoUrl)&&/\.mp4(?:\?.*)?$/i.test(p.videoUrl)){
   fetch(p.videoUrl,{method:'HEAD'}).then(response=>{
    if(!response.ok||!(response.headers.get('content-type')||'').includes('video/'))return;
-   const player=document.createElement('video');player.src=p.videoUrl;player.controls=true;player.preload='metadata';player.playsInline=true;player.setAttribute('aria-label','Videodemo: '+p.title);frame.replaceChildren(player);status.textContent='Se videodemo';count++;showCount();
+   const player=document.createElement('video');player.src=p.videoUrl;player.controls=true;player.preload='metadata';player.playsInline=true;player.setAttribute('aria-label','Videodemo: '+p.title);frame.replaceChildren(player);status.textContent='Se videodemo';
   }).catch(()=>{});
  }
 });
-showCount();
 </script></body></html>
